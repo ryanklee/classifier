@@ -1,0 +1,56 @@
+import os
+import subprocess
+import argparse
+import re
+import json
+
+# Function to sanitize a title into a valid filename
+def sanitize_filename(title):
+    return re.sub(r'[\\/*?:"<>|]', "", title).strip()
+
+# Function to call the LLM CLI tool with a prompt
+def get_suggested_title_and_filename(content):
+    prompt = (
+        "Given the following markdown content, generate a JSON object with a 'title' and a 'filename'. "
+        "The 'title' should be a concise and descriptive title for the content, and the 'filename' should be a "
+        "sanitized version of the title suitable for use as a file name. Here is the markdown content:\n\n"
+        f"{content}\n\n"
+        "Expected JSON response format:\n"
+        "{\n"
+        "  \"title\": \"A descriptive title\",\n"
+        "  \"filename\": \"a_descriptive_title.md\"\n"
+        "}\n"
+    )
+    command = ['llm', prompt, '--json']
+    result = subprocess.run(command, capture_output=True, text=True)
+    if result.returncode == 0:
+        try:
+            response = json.loads(result.stdout)
+            title = response.get("title", "").strip()
+            filename = response.get("filename", "").strip()
+            return title, filename
+        except json.JSONDecodeError:
+            raise Exception("Failed to parse JSON response from LLM.")
+    else:
+        raise Exception(f"LLM command failed with return code {result.returncode}")
+
+# Function to process markdown files in the directory
+def process_markdown_files(directory):
+    for filename in os.listdir(directory):
+        if filename.endswith(".md"):
+            file_path = os.path.join(directory, filename)
+            with open(file_path, 'r', encoding='utf-8') as file:
+                content = file.read()
+            suggested_title, suggested_filename = get_suggested_title_and_filename(content)
+            new_filename = sanitize_filename(suggested_filename)
+            new_file_path = os.path.join(directory, new_filename)
+            os.rename(file_path, new_file_path)
+            print(f"Renamed '{filename}' to '{new_filename}'")
+
+# Parse command-line arguments
+parser = argparse.ArgumentParser(description="Rename markdown files based on their content using LLM.")
+parser.add_argument("directory", type=str, help="The directory containing markdown files.")
+args = parser.parse_args()
+
+# Process the markdown files in the provided directory
+process_markdown_files(args.directory)
