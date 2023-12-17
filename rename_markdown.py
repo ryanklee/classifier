@@ -3,6 +3,7 @@ import subprocess
 import argparse
 import re
 import json
+import json
 # Function to generate and create a JSON file
 def generate_json_file(data, filename='output.json'):
     with open(filename, 'w', encoding='utf-8') as f:
