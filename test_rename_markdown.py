@@ -26,12 +26,23 @@ def test_get_suggested_title_and_filename_failure(mock_run):
 # Test the process_markdown_files function
 @patch('os.listdir')
 @patch('os.rename')
-@patch('builtins.open', new_callable=mock_open, read_data="Test content")
+@patch('builtins.open', new_callable=mock_open)
 @patch('rename_markdown.get_suggested_title_and_filename')
 def test_process_markdown_files(mock_get_suggested_title_and_filename, mock_open, mock_rename, mock_listdir):
-    mock_listdir.return_value = ['test.md']
-    mock_get_suggested_title_and_filename.return_value = ("Test Title", "test_title.md")
-    rename_markdown.process_markdown_files("test_directory")
-    mock_rename.assert_called_once_with("test_directory/test.md", "test_directory/test_title.md")
+    test_input_dir = "tests/test_data"
+    test_output_dir = "tests/test_data_out"
+    mock_listdir.return_value = ['note_1.md', 'note_2.md', 'note_3.md']
+    mock_get_suggested_title_and_filename.side_effect = [
+        ("My First Note", "my_first_note.md"),
+        ("Recipe for Banana Bread", "recipe_for_banana_bread.md"),
+        ("Meeting Minutes 2021-03-15", "meeting_minutes_2021_03_15.md")
+    ]
+    with patch('builtins.open', mock_open(read_data="# My First Note\n...")):
+        rename_markdown.process_markdown_files(test_input_dir)
+    mock_rename.assert_has_calls([
+        call(os.path.join(test_input_dir, 'note_1.md'), os.path.join(test_output_dir, 'my_first_note.md')),
+        call(os.path.join(test_input_dir, 'note_2.md'), os.path.join(test_output_dir, 'recipe_for_banana_bread.md')),
+        call(os.path.join(test_input_dir, 'note_3.md'), os.path.join(test_output_dir, 'meeting_minutes_2021_03_15.md')),
+    ], any_order=True)
 
 # Add more tests as needed to cover edge cases and error handling
