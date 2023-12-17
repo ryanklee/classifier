@@ -1,0 +1,26 @@
+{
+  "document_type": "Project Overview for LLM",
+  "project_overview": {
+    "description": "A brief description of the project and its purpose.",
+    "intended_outcomes": "What the project aims to achieve."
+  },
+  "current_status": {
+    "completed_milestones": ["List of completed milestones"],
+    "pending_tasks": ["List of pending tasks"],
+    "known_issues": ["List of known issues"]
+  },
+  "goals": {
+    "short_term": ["List of short-term goals"],
+    "long_term": ["List of long-term goals"]
+  },
+  "tasks": {
+    "priority": ["High-priority tasks"],
+    "upcoming": ["Tasks to be done next"]
+  },
+  "where_we_left_off": "Summary of the last session's progress or the state of the project when it was last worked on.",
+  "technical_details": {
+    "architecture": "Description or link to architecture diagrams.",
+    "api_documentation": "Description or link to API documentation.",
+    "coding_standards": "Description or link to coding standards."
+  }
+}
