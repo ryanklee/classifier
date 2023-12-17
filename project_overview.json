@@ -21,7 +21,15 @@
   "technical_details": {
     "architecture": "Description or link to architecture diagrams.",
     "api_documentation": "Description or link to API documentation.",
-    "coding_standards": "Description or link to coding standards."
+    "coding_standards": "Description or link to coding standards.",
+    "utilities": {
+      "rename_markdown": {
+        "description": "Automates the renaming of Markdown files based on their content. It uses an LLM to suggest meaningful titles which are then sanitized and used to update the filenames, ensuring a clean and descriptive naming convention.",
+        "usage": "Executed via command line, it processes all Markdown files in a specified directory.",
+        "input": "Directory path containing Markdown files.",
+        "output": "Markdown files are renamed according to the suggestions from the LLM."
+      }
+    }
   },
   "documentation_urls": [
     {
