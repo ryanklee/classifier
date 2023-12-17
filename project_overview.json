@@ -22,5 +22,10 @@
     "architecture": "Description or link to architecture diagrams.",
     "api_documentation": "Description or link to API documentation.",
     "coding_standards": "Description or link to coding standards."
-  }
+  },
+  "documentation_urls": [
+    "URL to first piece of documentation",
+    "URL to second piece of documentation",
+    "... additional URLs as needed ..."
+  ]
 }
