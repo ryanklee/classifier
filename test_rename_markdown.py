@@ -1,6 +1,12 @@
+import sys
+import os
 import pytest
-import rename_markdown
 from unittest.mock import patch, mock_open, MagicMock
+
+# Add the directory containing rename_markdown.py to the Python path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+import rename_markdown
 
 # Test the sanitize_filename function
 def test_sanitize_filename():
