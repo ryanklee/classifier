@@ -5,9 +5,14 @@
     "intended_outcomes": "What the project aims to achieve."
   },
   "current_status": {
-    "completed_milestones": ["List of completed milestones"],
-    "pending_tasks": ["List of pending tasks"],
-    "known_issues": ["List of known issues"]
+    "completed_milestones": [
+      "Added functionality to the rename_markdown.py script to generate a JSON file with suggested titles and filenames for Markdown files."
+    ],
+    "pending_tasks": [
+      "Refine the rename_markdown.py script to handle edge cases and error conditions.",
+      "Update documentation to reflect the new functionality."
+    ],
+    "known_issues": []
   },
   "goals": {
     "short_term": ["List of short-term goals"],
@@ -24,10 +29,10 @@
     "coding_standards": "Description or link to coding standards.",
     "utilities": {
       "rename_markdown": {
-        "description": "Automates the renaming of Markdown files based on their content. It uses an LLM to suggest meaningful titles which are then sanitized and used to update the filenames, ensuring a clean and descriptive naming convention.",
-        "usage": "Executed via command line, it processes all Markdown files in a specified directory.",
+        "description": "Generates a JSON file with suggested titles and filenames for Markdown files based on their content using an LLM.",
+        "usage": "Executed via command line, it processes all Markdown files in a specified directory and outputs a JSON file with suggestions.",
         "input": "Directory path containing Markdown files.",
-        "output": "Markdown files are renamed according to the suggestions from the LLM."
+        "output": "A JSON file containing the original filenames, paths, suggested titles, and suggested filenames for each Markdown file."
       }
     }
   },
