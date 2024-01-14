@@ -2,6 +2,8 @@ import sys
 import os
 import pytest
 from unittest.mock import patch, mock_open, MagicMock
+from llamalab.llamaindex import ChromaIndex
+from llamalab.chromadb import ChromaDB
 
 # Add the directory containing rename_markdown.py to the Python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -31,7 +33,7 @@ def test_get_suggested_title_and_filename_failure(mock_run):
 
 # Function to put all files into a vector store and use llamaindex and chromadb
 def put_files_into_vector_store_and_use_llamaindex_chromadb(directory):
-    vector_store = ChromaIndex()
+    vector_store = ChromaIndex.ChromaIndex()
     for filename in os.listdir(directory):
         if filename.endswith(".md"):
             with open(os.path.join(directory, filename), 'r') as file:
