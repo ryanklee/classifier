@@ -6,21 +6,35 @@
   },
   "current_status": {
     "completed_milestones": [
-      "Added functionality to the rename_markdown.py script to generate a JSON file with suggested titles and filenames for Markdown files."
+      "Added functionality to the rename_markdown.py script to generate a JSON file with suggested titles and filenames for Markdown files.",
+      "Added function to put all files into a vector store and use llamaindex and chromadb."
     ],
     "pending_tasks": [
       "Refine the rename_markdown.py script to handle edge cases and error conditions.",
-      "Update documentation to reflect the new functionality."
+      "Update documentation to reflect the new functionality.",
+      "Integrate llamaindex and chromadb into the rename_markdown.py script."
     ],
     "known_issues": []
   },
   "goals": {
-    "short_term": ["List of short-term goals"],
-    "long_term": ["List of long-term goals"]
+    "short_term": [
+      "Integrate llamaindex and chromadb into the rename_markdown.py script.",
+      "Handle edge cases and error conditions in the rename_markdown.py script."
+    ],
+    "long_term": [
+      "Improve the accuracy of title and filename suggestions.",
+      "Expand the utility to support other file types."
+    ]
   },
   "tasks": {
-    "priority": ["High-priority tasks"],
-    "upcoming": ["Tasks to be done next"]
+    "priority": [
+      "Integrate llamaindex and chromadb into the rename_markdown.py script.",
+      "Handle edge cases and error conditions in the rename_markdown.py script."
+    ],
+    "upcoming": [
+      "Improve the accuracy of title and filename suggestions.",
+      "Expand the utility to support other file types."
+    ]
   },
   "where_we_left_off": "Summary of the last session's progress or the state of the project when it was last worked on.",
   "technical_details": {
@@ -29,7 +43,7 @@
     "coding_standards": "Description or link to coding standards.",
     "utilities": {
       "rename_markdown": {
-        "description": "Generates a JSON file with suggested titles and filenames for Markdown files based on their content using an LLM.",
+        "description": "Generates a JSON file with suggested titles and filenames for Markdown files based on their content using an LLM. It also puts all files into a vector store and uses llamaindex and chromadb.",
         "usage": "Executed via command line, it processes all Markdown files in a specified directory and outputs a JSON file with suggestions.",
         "input": "Directory path containing Markdown files.",
         "output": "A JSON file containing the original filenames, paths, suggested titles, and suggested filenames for each Markdown file."
