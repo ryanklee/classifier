@@ -62,4 +62,19 @@ def test_process_markdown_files(mock_get_suggested_title_and_filename, mock_open
         call(os.path.join(test_input_dir, 'note_3.md'), os.path.join(test_output_dir, 'meeting_minutes_2021_03_15.md')),
     ], any_order=True)
 
+# Test the put_files_into_vector_store_and_use_llamaindex_chromadb function
+@patch('os.listdir')
+@patch('builtins.open', new_callable=mock_open)
+def test_put_files_into_vector_store_and_use_llamaindex_chromadb(mock_open, mock_listdir):
+    test_directory = "tests/test_data"
+    mock_listdir.return_value = ['note_1.md', 'note_2.md', 'note_3.md']
+    mock_open.side_effect = [
+        mock_open(read_data="Test content 1").return_value,
+        mock_open(read_data="Test content 2").return_value,
+        mock_open(read_data="Test content 3").return_value
+    ]
+    vector_store = put_files_into_vector_store_and_use_llamaindex_chromadb(test_directory)
+    assert len(vector_store) == 3
+    # Add more assertions as needed to verify the contents of the vector store
+
 # Add more tests as needed to cover edge cases and error handling
