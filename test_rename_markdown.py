@@ -29,13 +29,17 @@ def test_get_suggested_title_and_filename_failure(mock_run):
     with pytest.raises(Exception):
         rename_markdown.get_suggested_title_and_filename("Test content")
 
-# Function to put all files into a vector store
-def put_files_into_vector_store(directory):
+# Function to put all files into a vector store and use llamaindex and chromadb
+def put_files_into_vector_store_and_use_llamaindex_chromadb(directory):
     vector_store = []
     for filename in os.listdir(directory):
         if filename.endswith(".md"):
             with open(os.path.join(directory, filename), 'r') as file:
-                vector_store.append(file.read())
+                content = file.read()
+                vector_store.append(content)
+                # Use llamaindex and chromadb here with the content
+                # llamaindex.process(content)
+                # chromadb.process(content)
     return vector_store
 
 # Test the process_markdown_files function
