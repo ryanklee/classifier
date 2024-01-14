@@ -29,6 +29,15 @@ def test_get_suggested_title_and_filename_failure(mock_run):
     with pytest.raises(Exception):
         rename_markdown.get_suggested_title_and_filename("Test content")
 
+# Function to put all files into a vector store
+def put_files_into_vector_store(directory):
+    vector_store = []
+    for filename in os.listdir(directory):
+        if filename.endswith(".md"):
+            with open(os.path.join(directory, filename), 'r') as file:
+                vector_store.append(file.read())
+    return vector_store
+
 # Test the process_markdown_files function
 @patch('os.listdir')
 @patch('os.rename')
