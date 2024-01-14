@@ -1,8 +1,8 @@
 {
   "document_type": "Project Overview Document for Reference by LLM",
   "project_overview": {
-    "description": "A brief description of the project and its purpose.",
-    "intended_outcomes": "What the project aims to achieve."
+    "description": "The project is to create a utility that transforms markdown documents for use with the Obsidian personal knowledge management application.",
+    "intended_outcomes": "The utility should accomplish the following: take as input the markdown files in a directory and any sub-directories (recursively), add a title to each file based on that file's content, add tags to the frontmatter based on that file's content and any existing tags being used elsewhere, and rename the file based on the newly determined title while following file-name character restrictions."
   },
   "current_status": {
     "completed_milestones": [
