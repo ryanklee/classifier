@@ -2,7 +2,6 @@ import sys
 import os
 import pytest
 from unittest.mock import patch, mock_open, MagicMock
-from llamaindex import ChromaIndex
 
 # Add the directory containing rename_markdown.py to the Python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
